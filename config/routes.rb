@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  devise_for :users
+  
+  authenticate :user do
+    root to: 'users#index'
+    resources :users
+  end
 end
